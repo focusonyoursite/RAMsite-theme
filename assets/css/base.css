@@ -1,0 +1,70 @@
+@layer base {
+    /* Typografie basis stijlen */
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-display font-bold text-ram-gray-900;
+    }
+
+    h1 {
+        @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+    }
+
+    h2 {
+        @apply text-3xl md:text-4xl lg:text-5xl leading-tight;
+    }
+
+    h3 {
+        @apply text-2xl md:text-3xl leading-snug;
+    }
+
+    p {
+        @apply text-ram-gray-700 leading-relaxed;
+    }
+
+    /* Sectie spacing */
+    section {
+        @apply py-16 md:py-24;
+    }
+
+    .container {
+        @apply px-4 mx-auto max-w-7xl;
+    }
+
+    /* Formulier elementen */
+    input, textarea, select {
+        @apply rounded-lg border-ram-gray-200 focus:border-ram-blue-500 focus:ring-ram-blue-500;
+    }
+
+    /* Links */
+    a {
+        @apply transition-colors duration-200;
+    }
+}
+
+@layer components {
+    /* Custom componenten */
+    .btn {
+        @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+    }
+
+    .btn-primary {
+        @apply bg-ram-blue-500 text-white hover:bg-ram-blue-600 focus:ring-4 focus:ring-ram-blue-200;
+    }
+
+    .btn-secondary {
+        @apply bg-ram-purple-500 text-white hover:bg-ram-purple-600 focus:ring-4 focus:ring-ram-purple-200;
+    }
+
+    .btn-outline {
+        @apply border-2 border-ram-blue-500 text-ram-blue-500 hover:bg-ram-blue-50;
+    }
+
+    /* Card stijlen */
+    .card {
+        @apply bg-white rounded-xl shadow-soft hover:shadow-medium transition-shadow duration-200;
+    }
+
+    /* Gradient tekst */
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-ram-blue-500 to-ram-purple-500;
+    }
+} 

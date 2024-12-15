@@ -1,180 +1,104 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
-const { scrollbarGutter, scrollbarWidth, scrollbarColor } = require('tailwind-scrollbar-utilities');
-const plugin = require('tailwindcss/plugin')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: [
-    './theme/views/**/*.twig',
-    './theme/helpers/**/*.html',
-    './theme/blocks/**/*.twig',
-    './theme/views/components/**/*.twig',
-  ],
-   darkMode: 'class',
-  theme: {
-     fontSize: {
-      xs: [
-        "0.75rem",
-        {
-          lineHeight: "1rem",
+    content: [
+        './templates/**/*.php',
+        './views/**/*.twig',
+        './assets/js/**/*.js'
+    ],
+    theme: {
+        extend: {
+            colors: {
+                // RAM Marketing exacte kleuren
+                'ram-blue': {
+                    50: '#e6f3ff',
+                    100: '#cce7ff',
+                    200: '#99cfff',
+                    300: '#66b7ff',
+                    400: '#339fff',
+                    500: '#0087ff',  // Primaire kleur
+                    600: '#006ccc',
+                    700: '#005199',
+                    800: '#003666',
+                    900: '#001b33',
+                },
+                'ram-purple': {
+                    50: '#f5e6ff',
+                    100: '#ebccff',
+                    200: '#d799ff',
+                    300: '#c366ff',
+                    400: '#af33ff',
+                    500: '#9b00ff',  // Secundaire kleur
+                    600: '#7c00cc',
+                    700: '#5d0099',
+                    800: '#3e0066',
+                    900: '#1f0033',
+                },
+                'ram-gray': {
+                    50: '#f9fafb',
+                    100: '#f3f4f6',
+                    200: '#e5e7eb',
+                    300: '#d1d5db',
+                    400: '#9ca3af',
+                    500: '#6b7280',
+                    600: '#4b5563',
+                    700: '#374151',
+                    800: '#1f2937',
+                    900: '#111827',
+                }
+            },
+            fontFamily: {
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                display: ['Montserrat', ...defaultTheme.fontFamily.sans],
+                body: ['Inter', ...defaultTheme.fontFamily.sans],
+            },
+            spacing: {
+                '128': '32rem',
+                '144': '36rem',
+            },
+            borderRadius: {
+                'xl': '1rem',
+                '2xl': '1.5rem',
+                '3xl': '2rem',
+            },
+            boxShadow: {
+                'soft': '0 2px 15px rgba(0, 0, 0, 0.05)',
+                'medium': '0 4px 20px rgba(0, 0, 0, 0.1)',
+                'hard': '0 8px 30px rgba(0, 0, 0, 0.15)',
+            },
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        color: theme('colors.ram-gray.700'),
+                        a: {
+                            color: theme('colors.ram-blue.500'),
+                            '&:hover': {
+                                color: theme('colors.ram-blue.600'),
+                            },
+                        },
+                        h1: {
+                            color: theme('colors.ram-gray.900'),
+                            fontFamily: theme('fontFamily.display').join(', '),
+                        },
+                        h2: {
+                            color: theme('colors.ram-gray.900'),
+                            fontFamily: theme('fontFamily.display').join(', '),
+                        },
+                        h3: {
+                            color: theme('colors.ram-gray.900'),
+                            fontFamily: theme('fontFamily.display').join(', '),
+                        },
+                    },
+                },
+            }),
         },
-      ],
-      sm: [
-        "0.875rem",
-        {
-          lineHeight: "1.5rem",
-        },
-      ],
-      base: [
-        "1rem",
-        {
-          lineHeight: "1.75rem",
-        },
-      ],
-      lg: [
-        "1.125rem",
-        {
-          lineHeight: "2rem",
-        },
-      ],
-      xl: [
-        "1.25rem",
-        {
-          lineHeight: "2rem",
-        },
-      ],
-      "2xl": [
-        "1.5rem",
-        {
-          lineHeight: "2rem",
-        },
-      ],
-      "3xl": [
-        "2rem",
-        {
-          lineHeight: "2.5rem",
-        },
-      ],
-      "4xl": [
-        "2.5rem",
-        {
-          lineHeight: "3.5rem",
-        },
-      ],
-      "5xl": [
-        "3rem",
-        {
-          lineHeight: "3.5rem",
-        },
-      ],
-      "6xl": [
-        "3.75rem",
-        {
-          lineHeight: "1",
-        },
-      ],
-      "7xl": [
-        "4.5rem",
-        {
-          lineHeight: "1.1",
-        },
-      ],
-      "8xl": [
-        "6rem",
-        {
-          lineHeight: "1",
-        },
-      ],
-      "9xl": [
-        "8rem",
-        {
-          lineHeight: "1",
-        },
-      ],
     },
-    extend: {
-      boxShadow: {
-        thick: "0px 7px 32px rgb(0 0 0 / 35%);",
-      },
-      colors: {
-         primary: {
-          light: '#FEFCE8',
-          lightest: '#FEF9C3',
-          DEFAULT: '#FACC15',
-          dark: '#F59E0B',
-        },
-          brand: {
-          50: '#FEFCE8',
-          100: '#FEFCE8',
-          200: '#FEFCE8',
-          300: '#FEF9C3',
-          400: '#FEF9C3',
-          500: '#FACC15',
-          600: '#FACC15',
-          700: '#FACC15',
-          800: '#FACC15',
-          900: '#F59E0B',
-        },
-        accent: {
-          50: '#FFF9EB',
-          100: '#FFF1CC',
-          200: '#FFE9B0',
-          300: '#FFDF8A',
-          400: '#FFD873',
-          500: '#FFD158',
-          600: '#FFCB42',
-          700: '#FFC428',
-          800: '#FFBF1A',
-          900: '#EFAC00',
-        },
-        success: {
-          50: '#E5FDF4',
-          100: '#C3F9E6',
-          200: '#A5F4D8',
-          300: '#6BECBE',
-          400: '#58E1B0',
-          500: '#43D29F',
-          600: '#25CA8E',
-          700: '#17C083',
-          800: '#0BB678',
-          900: '#00AD6F',
-        },
-        warning: {},
-        error: {
-          50: '#FFE5E6',
-          100: '#FFC8C8',
-          200: '#FFB4B4',
-          300: '#FF9595',
-          400: '#FF7979',
-          500: '#FF6666',
-          600: '#FB4949',
-          700: '#F02E2E',
-          800: '#E10808',
-          900: '#C30000',
-        },
-        },
-      spacing: {
-        '128': '32rem',
-        '144': '36rem',
-      },
-      borderRadius: {
-        "4xl": "2rem",
-        "5xl": "3rem",
-        "6xl": "5rem",
-      },
-    },
-  },
-  plugins: [
-        require('flowbite-typography'),
+    plugins: [
         require('@tailwindcss/typography'),
-        require('@tailwindcss/forms'),
-        require('flowbite/plugin'),
-        plugin(function({ addVariant }) {
-            addVariant('htmx-settling', ['&.htmx-settling', '.htmx-settling &']);
-            addVariant('htmx-request',  ['&.htmx-request',  '.htmx-request &']);
-            addVariant('htmx-swapping', ['&.htmx-swapping', '.htmx-swapping &']);
-            addVariant('htmx-added',    ['&.htmx-added',    '.htmx-added &']);
+        require('@tailwindcss/forms')({
+            strategy: 'class',
         }),
-        // ... additional plugins if any ...
-    ]
-}
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/line-clamp'),
+    ],
+} 
