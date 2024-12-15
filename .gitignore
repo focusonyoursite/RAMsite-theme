@@ -1,7 +1,3 @@
-/node_modules/
-/vendor/
-*.log
+node_modules/
+assets/dist/
 .DS_Store
-/theme/assets/build/
-mix-manifest.json
-browsersync.config.js
